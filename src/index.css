@@ -1,0 +1,89 @@
+@import "tw-animate-css";
+@import "react-day-picker/dist/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this to ensure the root element takes full width */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --radius: 0.75rem;
+  /* A more unique, sophisticated and modern theme */
+  --background: 0 0% 100%; /* Off-white */
+  --foreground: 222 84% 5%; /* Deep, rich black */
+  
+  --card: 0 0% 100%;
+  --card-foreground: 222 84% 5%;
+  
+  --primary: 217 91% 60%; /* A more vibrant, memorable blue */
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222 47% 11%;
+  
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 347 91% 60%; /* A new, subtle pop of color for accents */
+  --accent-foreground: 0 0% 98%;
+
+  --destructive: 0 84% 60%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 217 91% 60%;
+}
+
+.dark {
+  --background: 222 84% 5%; /* Deep, rich black */
+  --foreground: 0 0% 98%; /* Off-white text */
+  
+  --card: 222 74% 8%;
+  --card-foreground: 0 0% 98%;
+
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 98%;
+
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+
+  --accent: 347 91% 60%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 63% 31%;
+  --border: 217 33% 22%;
+  --input: 217 33% 22%;
+  --ring: 217 91% 60%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}

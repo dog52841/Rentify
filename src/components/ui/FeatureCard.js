@@ -1,0 +1,3 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+const FeatureCard = ({ icon: Icon, title, description, iconContainerClassName, iconClassName }) => (_jsxs("div", { className: "bg-card rounded-xl p-8 text-center space-y-4 border h-full", children: [_jsx("div", { className: `w-16 h-16 rounded-full flex items-center justify-center mx-auto ring-8 ${iconContainerClassName || 'bg-primary/5 ring-primary/5'}`, children: _jsx(Icon, { className: `h-8 w-8 ${iconClassName || 'text-primary'}` }) }), _jsx("h3", { className: "text-xl font-semibold", children: title }), _jsx("p", { className: "text-muted-foreground", children: description })] }));
+export default FeatureCard;

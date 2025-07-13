@@ -1,0 +1,10 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import 'leaflet/dist/leaflet.css';
+import { AuthProvider } from './contexts/AuthContext';
+import { ThemeProvider } from './components/ui/ThemeProvider';
+import { Toaster } from './components/ui/Toaster';
+ReactDOM.createRoot(document.getElementById('root')).render(_jsx(React.StrictMode, { children: _jsx(ThemeProvider, { defaultTheme: "dark", storageKey: "vite-ui-theme", children: _jsxs(AuthProvider, { children: [_jsx(App, {}), _jsx(Toaster, {})] }) }) }));

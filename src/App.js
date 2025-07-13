@@ -1,0 +1,20 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'sonner';
+import { AuthProvider } from './contexts/AuthContext';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import { ThemeProvider } from './components/ui/ThemeProvider';
+import AdminDashboard from './components/admin/AdminDashboard';
+import NotFoundPage from './pages/NotFoundPage';
+import Home from './pages/Home';
+import ListingPage from './pages/ListingPage';
+import UserProfilePage from './pages/UserProfilePage';
+import DashboardPage from './pages/DashboardPage';
+import AuthPage from './pages/AuthPage';
+import ListItemPage from './pages/ListItemPage';
+const App = () => {
+    return (_jsx(ThemeProvider, { defaultTheme: "dark", storageKey: "vite-ui-theme", children: _jsx(Router, { children: _jsx(AuthProvider, { children: _jsxs("div", { className: "flex flex-col min-h-screen bg-background font-sans antialiased", children: [_jsx(Header, {}), _jsx("main", { className: "flex-grow", children: _jsx(Suspense, { fallback: _jsx("div", { children: "Loading..." }), children: _jsxs(Routes, { children: [_jsx(Route, { path: "/", element: _jsx(Home, {}) }), _jsx(Route, { path: "/auth", element: _jsx(AuthPage, {}) }), _jsx(Route, { path: "/listings/:listingId", element: _jsx(ListingPage, {}) }), _jsx(Route, { path: "/list-item", element: _jsx(ListItemPage, {}) }), _jsx(Route, { path: "/profile/:userId", element: _jsx(UserProfilePage, {}) }), _jsx(Route, { path: "/dashboard/*", element: _jsx(DashboardPage, {}) }), _jsx(Route, { path: "/admin", element: _jsx(AdminDashboard, {}) }), _jsx(Route, { path: "*", element: _jsx(NotFoundPage, {}) })] }) }) }), _jsx(Footer, {}), _jsx(Toaster, { richColors: true })] }) }) }) }));
+};
+export default App;

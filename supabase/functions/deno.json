@@ -1,0 +1,44 @@
+{
+  "importMap": "../import_map.json",
+  "lint": {
+    "files": {
+      "include": ["./"],
+      "exclude": ["./_shared/"]
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["./"],
+      "exclude": ["./_shared/"]
+    },
+    "options": {
+      "useTabs": true,
+      "lineWidth": 80,
+      "indentWidth": 4,
+      "singleQuote": false
+    }
+  },
+  "tasks": {
+    "serve": "deno run --allow-net --allow-env --watch main.ts"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.208.0/",
+    "stripe": "npm:stripe@14.14.0",
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2.39.3",
+    "date-fns": "npm:date-fns@3.3.1",
+    "shared/": "./shared/"
+  },
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "lib": ["deno.window", "dom", "esnext"],
+    "strict": true,
+    "allowJs": true,
+    "checkJs": false
+  }
+} 
