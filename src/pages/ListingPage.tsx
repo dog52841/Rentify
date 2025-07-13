@@ -512,7 +512,7 @@ const ListingPage = () => {
     }
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(listing.location)}`;
   };
-
+  
   if (loading) return <Skeleton />;
   if (error || !listing) return (
     <div className="max-w-2xl mx-auto py-24 text-center">
@@ -703,50 +703,50 @@ const ListingPage = () => {
                         </AnimatePresence>
                     </div>
                 </Tabs>
-                {/* Header */}
-                <AnimatedSection delay={0.1}>
-                    <div className="mb-8">
-                        <Button variant="ghost" onClick={() => navigate(-1)} className="mb-4 text-muted-foreground">
-                            <ChevronLeft className="mr-2 h-4 w-4" /> Back to results
-                        </Button>
-                        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">{listing.title}</h1>
-                        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3 text-muted-foreground">
-                            <div className="flex items-center gap-1.5">
-                                <Star className="h-5 w-5 text-primary fill-current" />
-                                <span className="font-bold text-foreground">{listing.average_rating?.toFixed(1) || "New"}</span>
-                                ({listing.review_count || 0} reviews)
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                                <MapPin className="h-5 w-5" />
-                                {listing.location}
-                            </div>
-                            {listing.is_verified && (
-                                <Badge variant="success" className="gap-1.5 pl-2">
-                                    <ShieldCheck className="h-4 w-4" /> Verified
-                                </Badge>
-                            )}
+            {/* Header */}
+            <AnimatedSection delay={0.1}>
+                <div className="mb-8">
+                    <Button variant="ghost" onClick={() => navigate(-1)} className="mb-4 text-muted-foreground">
+                        <ChevronLeft className="mr-2 h-4 w-4" /> Back to results
+                    </Button>
+                    <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">{listing.title}</h1>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-3 text-muted-foreground">
+                        <div className="flex items-center gap-1.5">
+                            <Star className="h-5 w-5 text-primary fill-current" />
+                            <span className="font-bold text-foreground">{listing.average_rating?.toFixed(1) || "New"}</span>
+                            ({listing.review_count || 0} reviews)
                         </div>
+                        <div className="flex items-center gap-1.5">
+                            <MapPin className="h-5 w-5" />
+                            {listing.location}
+                        </div>
+                        {listing.is_verified && (
+                            <Badge variant="success" className="gap-1.5 pl-2">
+                                <ShieldCheck className="h-4 w-4" /> Verified
+                            </Badge>
+                        )}
                     </div>
-                </AnimatedSection>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-                    {/* Left Column: Images & Details */}
-                    <div className="lg:col-span-3">
-                        {/* Image Gallery */}
-                        <Card className="relative group overflow-hidden shadow-2xl rounded-2xl border-border/10">
-                            <AnimatePresence initial={false}>
-                                <motion.img
-                                    key={currentImageIndex}
-                                    src={listing.image_urls[currentImageIndex]}
-                                    alt={`Listing image ${currentImageIndex + 1}`}
-                                    className="w-full object-cover aspect-video cursor-pointer"
-                                    onClick={() => openLightbox(currentImageIndex)}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </AnimatePresence>
+                </div>
+            </AnimatedSection>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                {/* Left Column: Images & Details */}
+                <div className="lg:col-span-3">
+                    {/* Image Gallery */}
+                    <Card className="relative group overflow-hidden shadow-2xl rounded-2xl border-border/10">
+                        <AnimatePresence initial={false}>
+                            <motion.img
+                                key={currentImageIndex}
+                                src={listing.image_urls[currentImageIndex]}
+                                alt={`Listing image ${currentImageIndex + 1}`}
+                                className="w-full object-cover aspect-video cursor-pointer"
+                                onClick={() => openLightbox(currentImageIndex)}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                            />
+                        </AnimatePresence>
                             
                             {/* Navigation Arrows */}
                             {listing.image_urls.length > 1 && (
@@ -777,28 +777,28 @@ const ListingPage = () => {
                                 </div>
                             )}
                             
-                            <div className="absolute top-4 right-4 flex items-center gap-2">
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button variant="secondary" size="icon" className="rounded-full h-10 w-10 bg-background/70 backdrop-blur-sm hover:bg-background/90">
-                                            <MoreHorizontal className="h-5 w-5" />
-                                        </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                        <DropdownMenuItem onClick={() => navigator.clipboard.writeText(window.location.href)}>
-                                            <Share2 className="mr-2 h-4 w-4" /> Share
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem onClick={() => setIsReportModalOpen(true)} className="text-red-500 focus:bg-red-50 focus:text-red-600">
-                                            <ShieldAlert className="mr-2 h-4 w-4" /> Report
-                                        </DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
+                        <div className="absolute top-4 right-4 flex items-center gap-2">
+                             <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="secondary" size="icon" className="rounded-full h-10 w-10 bg-background/70 backdrop-blur-sm hover:bg-background/90">
+                                        <MoreHorizontal className="h-5 w-5" />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem onClick={() => navigator.clipboard.writeText(window.location.href)}>
+                                        <Share2 className="mr-2 h-4 w-4" /> Share
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => setIsReportModalOpen(true)} className="text-red-500 focus:bg-red-50 focus:text-red-600">
+                                        <ShieldAlert className="mr-2 h-4 w-4" /> Report
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
 
-                                <Button variant="secondary" size="icon" className="rounded-full h-10 w-10 bg-background/70 backdrop-blur-sm hover:bg-background/90" onClick={handleToggleFavorite} disabled={isFavoriteLoading}>
-                                    {isFavorited ? <Heart className="h-5 w-5 text-red-500 fill-current" /> : <Heart className="h-5 w-5" />}
-                                </Button>
-                            </div>
-                        </Card>
+                            <Button variant="secondary" size="icon" className="rounded-full h-10 w-10 bg-background/70 backdrop-blur-sm hover:bg-background/90" onClick={handleToggleFavorite} disabled={isFavoriteLoading}>
+                                {isFavorited ? <Heart className="h-5 w-5 text-red-500 fill-current" /> : <Heart className="h-5 w-5" />}
+                            </Button>
+                        </div>
+                    </Card>
                         
                         {/* Thumbnail Navigation */}
                         {listing.image_urls.length > 1 && (
@@ -830,83 +830,83 @@ const ListingPage = () => {
                             </div>
                         )}
 
-                        {/* Description */}
-                        <AnimatedSection delay={0.3}>
-                            <Card className="border-0 bg-transparent shadow-none">
-                                <CardHeader className="p-0 mb-4">
-                                    <CardTitle className="text-2xl">About this item</CardTitle>
-                                </CardHeader>
-                                <CardContent className="p-0 text-muted-foreground whitespace-pre-wrap">
-                                    {listing.description}
-                                </CardContent>
-                            </Card>
-                        </AnimatedSection>
-                        
-                        <div className="my-8 border-t"></div>
+                    {/* Description */}
+                    <AnimatedSection delay={0.3}>
+                        <Card className="border-0 bg-transparent shadow-none">
+                            <CardHeader className="p-0 mb-4">
+                                <CardTitle className="text-2xl">About this item</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-0 text-muted-foreground whitespace-pre-wrap">
+                                {listing.description}
+                            </CardContent>
+                        </Card>
+                    </AnimatedSection>
+                    
+                    <div className="my-8 border-t"></div>
 
-                        {/* Reviews */}
-                        <AnimatedSection delay={0.4}>
-                            <Reviews listingId={listing.id} ownerId={listing.owner_id}/>
-                        </AnimatedSection>
+                    {/* Reviews */}
+                    <AnimatedSection delay={0.4}>
+                        <Reviews listingId={listing.id} ownerId={listing.owner_id}/>
+                    </AnimatedSection>
 
-                        <div className="my-8 border-t"></div>
+                    <div className="my-8 border-t"></div>
 
-                        {/* Map */}
-                        <AnimatedSection delay={0.5}>
-                            <h2 className="text-2xl font-bold mb-4">Location</h2>
-                            <div className="h-96 w-full rounded-2xl overflow-hidden">
-                                {mapPosition ? (
-                                    <MapContainer center={mapPosition} zoom={13} style={{ height: '100%', width: '100%' }}>
-                                        <TileLayer
-                                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                        />
-                                        <Marker position={mapPosition} icon={defaultIcon}></Marker>
-                                    </MapContainer>
-                                ) : (
-                                    <div className="h-full w-full bg-muted flex items-center justify-center">
-                                        <p className="text-muted-foreground">Location not available.</p>
-                                    </div>
-                                )}
-                            </div>
-                        </AnimatedSection>
-
-                    </div>
-
-                    {/* Right Column: Booking & Owner */}
-                    <div className="lg:col-span-2">
-                        <div className="sticky top-24 space-y-6">
-                            <BookingCard 
-                                listing={listing}
-                                bookingDate={bookingDate}
-                                setBookingDate={(date) => {
-                                    setBookingDate(date);
-                                    // Reset payment state if date changes
-                                    setPaymentError(null);
-                                }}
-                                bookingLoading={isBookingLoading}
-                                setIsBookingLoading={setIsBookingLoading}
-                                handleRequestToBook={handleRequestToBook}
-                                paymentError={paymentError}
-                                onSuccessfulPayment={handleSuccessfulPayment}
-                            />
-                            
-                            <OwnerCard 
-                                listing={listing}
-                                user={user}
-                                handleContactOwner={handleContactOwner}
-                            />
-                            
-                            {profile?.role === 'admin' && (
-                                <AdminVerificationCard 
-                                    listing={listing} 
-                                    onVerify={handleVerifyListing}
-                                    loading={isVerifying}
-                                />
+                    {/* Map */}
+                    <AnimatedSection delay={0.5}>
+                        <h2 className="text-2xl font-bold mb-4">Location</h2>
+                        <div className="h-96 w-full rounded-2xl overflow-hidden">
+                            {mapPosition ? (
+                                <MapContainer center={mapPosition} zoom={13} style={{ height: '100%', width: '100%' }}>
+                                    <TileLayer
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    />
+                                    <Marker position={mapPosition} icon={defaultIcon}></Marker>
+                                </MapContainer>
+                            ) : (
+                                <div className="h-full w-full bg-muted flex items-center justify-center">
+                                    <p className="text-muted-foreground">Location not available.</p>
+                                </div>
                             )}
                         </div>
+                    </AnimatedSection>
+
+                </div>
+
+                {/* Right Column: Booking & Owner */}
+                <div className="lg:col-span-2">
+                    <div className="sticky top-24 space-y-6">
+                        <BookingCard 
+                            listing={listing}
+                            bookingDate={bookingDate}
+                            setBookingDate={(date) => {
+                                setBookingDate(date);
+                                // Reset payment state if date changes
+                                setPaymentError(null);
+                            }}
+                                bookingLoading={isBookingLoading}
+                                setIsBookingLoading={setIsBookingLoading}
+                            handleRequestToBook={handleRequestToBook}
+                            paymentError={paymentError}
+                            onSuccessfulPayment={handleSuccessfulPayment}
+                        />
+                        
+                        <OwnerCard 
+                            listing={listing}
+                            user={user}
+                            handleContactOwner={handleContactOwner}
+                        />
+                        
+                        {profile?.role === 'admin' && (
+                           <AdminVerificationCard 
+                             listing={listing} 
+                             onVerify={handleVerifyListing}
+                             loading={isVerifying}
+                           />
+                        )}
                     </div>
                 </div>
+            </div>
             </motion.div>
         </div>
 
@@ -1188,22 +1188,22 @@ const BookingCard = ({
               <Loader2 className="h-6 w-6 animate-spin text-primary" />
             </div>
           ) : (
-            <DayPicker
-              mode="range"
-              selected={bookingDate}
-              onSelect={setBookingDate}
-              numberOfMonths={1}
+          <DayPicker
+            mode="range"
+            selected={bookingDate}
+            onSelect={setBookingDate}
+            numberOfMonths={1}
               disabled={[
                 { before: new Date() },
                 ...unavailableDates.map(date => new Date(date))
               ]}
-              className="p-3"
-              classNames={{
-                day_selected: "bg-primary text-primary-foreground",
-                day_range_middle: "bg-primary/20",
-                day_range_end: "bg-primary text-primary-foreground",
-                day_range_start: "bg-primary text-primary-foreground"
-              }}
+            className="p-3"
+            classNames={{
+              day_selected: "bg-primary text-primary-foreground",
+              day_range_middle: "bg-primary/20",
+              day_range_end: "bg-primary text-primary-foreground",
+              day_range_start: "bg-primary text-primary-foreground"
+            }}
               modifiers={{
                 unavailable: unavailableDates
               }}
@@ -1249,7 +1249,7 @@ const BookingCard = ({
                 <span className="text-lg">${total.toFixed(2)}</span>
               </div>
               <p className="text-xs text-muted-foreground mt-1">
-                You won't be charged until the owner approves and you complete payment
+                      You won't be charged until the owner approves and you complete payment
               </p>
             </div>
           </motion.div>

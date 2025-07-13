@@ -25,33 +25,33 @@ import {
   FilterX,
   RefreshCw
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { RangeSlider } from '@/components/ui/RangeSlider';
-import { supabase } from '@/lib/supabaseClient';
-import { useAuth } from '@/contexts/AuthContext';
-import { useToast } from '@/hooks/use-toast';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Card, CardContent } from '../components/ui/card';
+import { Badge } from '../components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import { RangeSlider } from '../components/ui/RangeSlider';
+import { supabase } from '../lib/supabaseClient';
+import { useAuth } from '../contexts/AuthContext';
+import { useToast } from '../hooks/use-toast';
 import { format } from 'date-fns';
 
 interface Listing {
-  id: string;
-  title: string;
+    id: string;
+    title: string;
   description: string;
   price_per_day: number;
   location: string;
   image_urls: string[];
-  category: string;
-  user_id: string;
+    category: string;
+    user_id: string;
   is_verified: boolean;
   created_at: string;
   average_rating?: number;
   review_count?: number;
   owner_name?: string;
   owner_avatar_url?: string;
-  view_count?: number;
+    view_count?: number;
   is_featured?: boolean;
 }
 
@@ -70,8 +70,8 @@ const Browse = () => {
   const [showVerifiedOnly, setShowVerifiedOnly] = useState(false);
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
   const [locationFilter, setLocationFilter] = useState('');
-  const { user } = useAuth();
-  const { toast } = useToast();
+    const { user } = useAuth();
+    const { toast } = useToast();
   const navigate = useNavigate();
 
   const categories = [
@@ -101,7 +101,7 @@ const Browse = () => {
     }
   }, [user]);
 
-  useEffect(() => {
+    useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
     };
@@ -190,19 +190,19 @@ const Browse = () => {
 
   const fetchFavorites = async () => {
     if (!user) return;
-    
-    try {
-      const { data, error } = await supabase
-        .from('favorites')
-        .select('listing_id')
-        .eq('user_id', user.id);
-      
+            
+            try {
+                const { data, error } = await supabase
+                    .from('favorites')
+                    .select('listing_id')
+                    .eq('user_id', user.id);
+                
       if (error) throw error;
       
       const favoriteIds = new Set(data?.map(fav => fav.listing_id) || []);
       setFavorites(favoriteIds);
     } catch (error) {
-      console.error('Error fetching favorites:', error);
+                    console.error('Error fetching favorites:', error);
     }
   };
 
@@ -292,10 +292,10 @@ const Browse = () => {
   }, [listings, searchTerm, selectedCategory, priceRange, sortBy, minRating, locationFilter, showVerifiedOnly]);
 
   const clearAllFilters = () => {
-    setSearchTerm('');
+        setSearchTerm('');
     setSelectedCategory('all');
-    setPriceRange([0, 1000]);
-    setMinRating(0);
+        setPriceRange([0, 1000]);
+        setMinRating(0);
     setLocationFilter('');
     setShowVerifiedOnly(false);
     setShowFeaturedOnly(false);
@@ -594,7 +594,7 @@ const Browse = () => {
 
                 {/* Category Filter */}
                 <div className="space-y-3">
-                  <label className="text-sm font-medium">Category</label>
+                <label className="text-sm font-medium">Category</label>
                   <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                     <SelectTrigger className="w-full rounded-xl bg-muted/70 border border-border focus:ring-2 focus:ring-primary/40 transition-all">
                       <SelectValue placeholder="Select category" />
@@ -607,18 +607,18 @@ const Browse = () => {
                         </SelectItem>
                       ))}
                     </SelectContent>
-                  </Select>
+                </Select>
                 </div>
 
                 {/* Price Range Filter */}
                 <div className="space-y-3">
                   <label className="text-sm font-medium">Price Range</label>
                   <div className="space-y-2">
-                    <RangeSlider 
+                <RangeSlider
                       min={0} 
                       max={1000} 
                       step={10} 
-                      value={priceRange} 
+                    value={priceRange}
                       onValueChange={setPriceRange} 
                       className="w-full" 
                     />
@@ -631,7 +631,7 @@ const Browse = () => {
 
                 {/* Rating Filter */}
                 <div className="space-y-3">
-                  <label className="text-sm font-medium">Minimum Rating</label>
+                <label className="text-sm font-medium">Minimum Rating</label>
                   <div className="space-y-2">
                     <RangeSlider 
                       min={0} 
@@ -686,7 +686,7 @@ const Browse = () => {
                 </Button>
               </Card>
             </div>
-          </div>
+                        </div>
 
           {/* Main Content */}
           <div className="flex-1">
@@ -717,8 +717,8 @@ const Browse = () => {
                   </Badge>
                 )}
               </div>
-            </div>
-
+                                    </div>
+                                    
             {/* Listings Grid/List */}
             {filteredAndSortedListings.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-24">
@@ -727,8 +727,8 @@ const Browse = () => {
                 <p className="text-muted-foreground mb-4">Try adjusting your filters or search term.</p>
                 <Button onClick={clearAllFilters} className="rounded-xl">
                   <FilterX className="w-4 h-4 mr-2" />
-                  Clear All Filters
-                </Button>
+                                                Clear All Filters
+                                            </Button>
               </div>
             ) : (
               <div className={viewMode === 'grid' 
@@ -752,16 +752,16 @@ const Browse = () => {
 
       {/* Back to Top Button */}
       {showBackToTop && (
-        <Button
+                                            <Button 
           className="fixed bottom-8 right-8 z-50 rounded-full shadow-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all"
           size="icon"
           onClick={scrollToTop}
           aria-label="Back to top"
         >
           <ChevronUp className="h-6 w-6" />
-        </Button>
-      )}
-    </div>
+                                            </Button>
+                            )}
+            </div>
   );
 };
 

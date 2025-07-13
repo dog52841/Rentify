@@ -1153,13 +1153,13 @@ const UsersTab = ({
             });
 
             onRefresh();
-        } catch (error: any) {
-            toast({
-                variant: 'destructive',
+                } catch (error: any) {
+                    toast({
+                        variant: 'destructive',
                 title: 'Error',
-                description: error.message
-            });
-        }
+                        description: error.message
+                    });
+                }
     };
 
     const filteredUsers = users.filter(user => {
@@ -2340,9 +2340,9 @@ const AdminDashboardPage = () => {
                         reviews_last_30_days: 0
                     };
                 }).catch(err => {
-                    console.error('Exception fetching stats:', err);
-                    results.stats = null;
-                })
+                        console.error('Exception fetching stats:', err);
+                        results.stats = null;
+                    })
             );
 
             // Fetch users
@@ -2629,22 +2629,22 @@ const AdminDashboardPage = () => {
             // Fetch activities (placeholder - you can implement this later)
             promises.push(
                 Promise.resolve().then(() => {
-                    results.activities = [];
-                })
+                        results.activities = [];
+                    })
             );
 
             // Fetch reports (placeholder - you can implement this later)
             promises.push(
                 Promise.resolve().then(() => {
-                    results.reports = [];
-                })
+                        results.reports = [];
+                    })
             );
 
             // Fetch notifications (placeholder - you can implement this later)
             promises.push(
                 Promise.resolve().then(() => {
-                    results.notifications = [];
-                })
+                        results.notifications = [];
+                    })
             );
 
             // Wait for all promises to resolve
