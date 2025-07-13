@@ -46,7 +46,7 @@ const Home = () => {
       setLoading(true);
       try {
         // Try to get featured listings using the RPC
-        let { data: listingsData, error: listingsError } = await supabase.rpc('get_featured_listings', { p_limit: 4 });
+        let { data: listingsData, error: listingsError } = await supabase.rpc('get_featured_listings', { p_limit: 4, p_offset: 0 });
 
         // If no featured listings, fallback to most recent approved listings
         if (!listingsData || listingsData.length === 0) {

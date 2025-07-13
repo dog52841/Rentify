@@ -506,7 +506,7 @@ const Browse = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground pt-24 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-gradient-to-br from-[#0f2027] via-[#2c5364] to-[#232526] animate-gradient-x text-foreground pt-24 transition-colors duration-300">
       {/* Sticky Search and Filter Bar */}
       <div className="sticky top-20 z-40 bg-card/80 backdrop-blur-lg border-b border-border shadow-lg">
         <div className="container mx-auto px-4 py-4">
@@ -570,24 +570,24 @@ const Browse = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full px-0">
         <div className="flex gap-8">
           {/* Sidebar Filters */}
           <div className={`${showFilters ? 'block' : 'hidden'} lg:block w-80 flex-shrink-0`}>
             <div className="sticky top-32 space-y-6">
-              <Card className="p-6 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <Filter className="w-5 h-5" />
+              <Card className="p-8 bg-white/20 backdrop-blur-2xl border border-white/30 shadow-3xl rounded-3xl">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold flex items-center gap-2">
+                    <Filter className="w-6 h-6" />
                     Filters
                   </h3>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={clearAllFilters}
-                    className="text-xs text-muted-foreground hover:text-foreground"
+                    className="text-sm text-muted-foreground hover:text-foreground"
                   >
-                    <FilterX className="w-4 h-4 mr-1" />
+                    <FilterX className="w-5 h-5 mr-1" />
                     Clear All
                   </Button>
                 </div>
